@@ -6,10 +6,11 @@
 
 #include <iostream>
 #include <string>
+#include <format>
 
 namespace Experiment
 {
-	// ÓÃÓÚÊ¹ÓÃ format ½øĞĞÊä³öµÄº¯ÊıÄ£°å
+	// ç”¨äºä½¿ç”¨ format è¿›è¡Œè¾“å‡ºçš„å‡½æ•°æ¨¡æ¿
 	template <typename Elem, typename OTraits, typename STraits, typename... Args>
 	inline void basic_print(std::basic_ostream<Elem, OTraits>& output, std::basic_string_view<Elem, STraits> fmt, Args&&... args)
 	{
@@ -30,12 +31,12 @@ namespace Experiment
 		print(fmt, std::forward<Args>(args)...);
 		println();
 	}
-	// ÓÃÓÚ×ª»»×Ö·û´®×ÖÃæÁ¿Îª×Ö·û´®ÊÓÍ¼µÄ×ÖÃæÁ¿ÔËËã·ûÖØÔØ (char °æ±¾)
+	// ç”¨äºè½¬æ¢å­—ç¬¦ä¸²å­—é¢é‡ä¸ºå­—ç¬¦ä¸²è§†å›¾çš„å­—é¢é‡è¿ç®—ç¬¦é‡è½½ (char ç‰ˆæœ¬)
 	inline std::string_view operator"" _view(const char* str, std::size_t size)
 	{
 		return std::string_view{ str, size };
 	}
-	// ÓÃÓÚ×ª»»×Ö·û´®×ÖÃæÁ¿Îª×Ö·û´®ÊÓÍ¼µÄ×ÖÃæÁ¿ÔËËã·ûÖØÔØ (wchar_t °æ±¾)
+	// ç”¨äºè½¬æ¢å­—ç¬¦ä¸²å­—é¢é‡ä¸ºå­—ç¬¦ä¸²è§†å›¾çš„å­—é¢é‡è¿ç®—ç¬¦é‡è½½ (wchar_t ç‰ˆæœ¬)
 	inline std::wstring_view operator"" _view(const wchar_t* str, std::size_t size)
 	{
 		return std::wstring_view{ str, size };
